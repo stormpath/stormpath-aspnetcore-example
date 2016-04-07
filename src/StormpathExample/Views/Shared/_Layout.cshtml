@@ -34,6 +34,18 @@
                     <li><a asp-controller="Home" asp-action="About">About</a></li>
                     <li><a asp-controller="Home" asp-action="Contact">Contact</a></li>
                 </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    @if (Context.User.Identity.IsAuthenticated)
+                    {
+                        <li><p class="navbar-text">Hello, <b>@Context.User.Identity.Name</b></p></li>
+                        <li><a asp-controller="Manage" asp-action="Index">Manage Account</a></li>
+                        <li><a href="/logout">Log Out</a></li>
+                    }
+                    else
+                    {
+                        <li><p class="navbar-text">Not logged in</p></li>
+                    }
+                </ul>
             </div>
         </div>
     </div>
