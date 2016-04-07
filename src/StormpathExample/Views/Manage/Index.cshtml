@@ -11,11 +11,11 @@
 
 <h3>From ClaimsPrincipal</h3>
 <p><b>Username:</b> @Context.User.Identity.Name</p>
-<p><b>Email:</b> @Context.User.FindFirst(ClaimTypes.Email)</p>
-<p><b>Full Name:</b> @Context.User.FindFirst("FullName")</p>
-<p><b>First:</b> @Context.User.FindFirst(ClaimTypes.GivenName)</p>
-<p><b>Last:</b> @Context.User.FindFirst(ClaimTypes.Surname)</p>
-<p><b>ID:</b> @Context.User.FindFirst(ClaimTypes.NameIdentifier)</p>
+<p><b>Email:</b> @Context.User.FindFirst(ClaimTypes.Email)?.Value</p>
+<p><b>Full Name:</b> @Context.User.FindFirst("FullName")?.Value</p>
+<p><b>First:</b> @Context.User.FindFirst(ClaimTypes.GivenName)?.Value</p>
+<p><b>Last:</b> @Context.User.FindFirst(ClaimTypes.Surname)?.Value</p>
+<p><b>ID:</b> @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</p>
 
 <h3>From IAccount</h3>
 <p><b>Username:</b> @Account.Username</p>
