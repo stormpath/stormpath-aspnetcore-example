@@ -7,6 +7,7 @@ using Microsoft.AspNet.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Stormpath.AspNetCore;
 
 namespace StormpathExample
 {
@@ -26,6 +27,14 @@ namespace StormpathExample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddStormpath(configuration: new
+            {
+                application = new
+                {
+                    name = "My Application"
+                }
+            });
+
             // Add framework services.
             services.AddMvc();
         }
@@ -47,6 +56,8 @@ namespace StormpathExample
             }
 
             app.UseIISPlatformHandler();
+
+            app.UseStormpath();
 
             app.UseStaticFiles();
 
