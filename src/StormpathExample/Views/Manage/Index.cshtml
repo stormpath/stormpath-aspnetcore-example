@@ -1,0 +1,26 @@
+﻿@using System.Security.Claims
+
+@inject Stormpath.SDK.Account.IAccount Account
+
+@{
+    ViewData["Title"] = "Manage";
+}
+<h2>@ViewData["Title"].</h2>
+
+<p>This route is <b>protected</b> and cannot be accessed unless you are logged in.</p>
+
+<h3>From ClaimsPrincipal</h3>
+<p><b>Username:</b> @Context.User.Identity.Name</p>
+<p><b>Email:</b> @Context.User.FindFirst(ClaimTypes.Email)</p>
+<p><b>Full Name:</b> @Context.User.FindFirst("FullName")</p>
+<p><b>First:</b> @Context.User.FindFirst(ClaimTypes.GivenName)</p>
+<p><b>Last:</b> @Context.User.FindFirst(ClaimTypes.Surname)</p>
+<p><b>ID:</b> @Context.User.FindFirst(ClaimTypes.NameIdentifier)</p>
+
+<h3>From IAccount</h3>
+<p><b>Username:</b> @Account.Username</p>
+<p><b>Email:</b> @Account.Email</p>
+<p><b>Full Name:</b> @Account.FullName</p>
+<p><b>First:</b> @Account.GivenName</p>
+<p><b>Last:</b> @Account.Surname</p>
+<p><b>ID:</b> @Account.Href</p>
