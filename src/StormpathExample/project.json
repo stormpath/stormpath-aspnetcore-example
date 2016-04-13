@@ -36,5 +36,5 @@
   "scripts": {
     "prepublish": [ "npm install", "bower install", "gulp clean", "gulp min" ]
   },
-  "version": "1.0.0"
+  "version": "0.1.0"
 }
