@@ -1,23 +1,16 @@
 ﻿@using System.Security.Claims
 
+@* The logged in Stormpath user can be injected into the view *@
 @inject Stormpath.SDK.Account.IAccount Account
 
 @{
-    ViewData["Title"] = "Manage";
+    ViewData["Title"] = "Manage Account";
 }
-<h2>@ViewData["Title"].</h2>
+<h2>@ViewData["Title"]</h2>
 
 <p>This route is <b>protected</b> and cannot be accessed unless you are logged in.</p>
 
-<h3>From ClaimsPrincipal</h3>
-<p><b>Username:</b> @Context.User.Identity.Name</p>
-<p><b>Email:</b> @Context.User.FindFirst(ClaimTypes.Email)?.Value</p>
-<p><b>Full Name:</b> @Context.User.FindFirst("FullName")?.Value</p>
-<p><b>First:</b> @Context.User.FindFirst(ClaimTypes.GivenName)?.Value</p>
-<p><b>Last:</b> @Context.User.FindFirst(ClaimTypes.Surname)?.Value</p>
-<p><b>ID:</b> @Context.User.FindFirst(ClaimTypes.NameIdentifier)?.Value</p>
-
-<h3>From IAccount</h3>
+<h3>Account Details</h3>
 <p><b>Username:</b> @Account.Username</p>
 <p><b>Email:</b> @Account.Email</p>
 <p><b>Full Name:</b> @Account.FullName</p>

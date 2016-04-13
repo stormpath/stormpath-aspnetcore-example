@@ -16,12 +16,21 @@
 
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
+using Stormpath.SDK.Account;
+using Stormpath.SDK.Client;
 
 namespace StormpathExample.Controllers
 {
     [Authorize]
     public class ManageController : Controller
     {
+        // Stormpath Client can be injected using DI
+        [FromServices]
+        public IClient StormpathClient { get; set; }
+
+        [FromServices]
+        public IAccount StormpathUser { get; set; }
+
         // GET: /<controller>/
         public IActionResult Index()
         {
