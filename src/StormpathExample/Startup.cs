@@ -69,9 +69,9 @@ namespace StormpathExample
 
             app.UseIISPlatformHandler();
 
-            app.UseStormpath();
-
             app.UseStaticFiles();
+
+            app.UseStormpath();
 
             app.UseMvc(routes =>
             {

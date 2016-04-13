@@ -26,6 +26,7 @@
     "node_modules"
   ],
   "frameworks": {
+    "dnx451": { },
     "dnxcore50": { }
   },
   "publishExclude": [
