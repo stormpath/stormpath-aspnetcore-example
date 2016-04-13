@@ -39,13 +39,16 @@ namespace StormpathExample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddStormpath(configuration: new
+            // Change this to the name or href of the Stormpath Application you want this project to use
+            var stormpathConfiguration = new
             {
                 application = new
                 {
                     name = "My Application"
                 }
-            });
+            };
+
+            services.AddStormpath(stormpathConfiguration);
 
             // Add framework services.
             services.AddMvc();
