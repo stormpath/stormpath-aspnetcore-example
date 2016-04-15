@@ -15,21 +15,27 @@ Example web application using ASP.NET Core MVC 6 and Stormpath. Clone it and kic
   Open your key file and grab the **API Key ID** and **API Key Secret**, then run these commands in PowerShell (or the Windows Command Prompt) to save them as environment variables:
 
   ```
-  setx STORMPATH_CLIENT_APIKEY_ID "[value-from-properties-file]"
-  setx STORMPATH_CLIENT_APIKEY_SECRET "[value-from-properties-file]"
+  setx STORMPATH_CLIENT_APIKEY_ID "[value from properties file]"
+  setx STORMPATH_CLIENT_APIKEY_SECRET "[value from properties file]"
+  ```
+  
+4. **Store your Stormpath Application href in an environment variable**
+
+  Grab the `href` (called **REST URL** in the Stormpath Console UI) of your Application. It should look something like this:
+
+  `https://api.stormpath.com/v1/applications/q42unYAj6PDLxth9xKXdL`
+
+  Save this as an environment variable:
+
+  ```
+  setx STORMPATH_APPLICATION_HREF "[your Application href]"
   ```
 
-4. **Clone this repository**
+5. **Clone this repository**
 
   ```
   git clone https://github.com/stormpath/stormpath-aspnetcore-example.git
   ```
-  
-5. **Edit the configuration**
-
-  In `Startup.cs`, edit the `stormpathConfiguration` declaration to point to the name or `href` of the Stormpath Application you want to use for the demo. If the Stormpath default "My Application" in  is fine, you can leave the configuration as-is.
-  
-  > :bulb: You can also set the environment variable STORMPATH_APPLICATION_HREF instead of configuring in code.
   
 6. **Build and run!**
   ```
