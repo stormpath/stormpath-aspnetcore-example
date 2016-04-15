@@ -39,16 +39,12 @@ namespace StormpathExample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // Change this to the name or href of the Stormpath Application you want this project to use
-            var stormpathConfiguration = new
-            {
-                application = new
-                {
-                    name = "My Application"
-                }
-            };
-
-            services.AddStormpath(stormpathConfiguration);
+            // By default, the Stormpath SDK will look for the 
+            // API Key ID, API Key Secret, and Application href in environment variables.
+            // You can optionally pass configuration here instead, if you want.
+            // Instantiate an object of type Stormpath.Configuration.Abstractions.StormpathConfiguration 
+            // to configure the SdK via code.
+            services.AddStormpath();
 
             // Add framework services.
             services.AddMvc();
