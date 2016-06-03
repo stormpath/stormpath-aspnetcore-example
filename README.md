@@ -43,8 +43,8 @@ Example web application using ASP.NET Core MVC 6 and Stormpath. Clone it and kic
   ```
   cd stormpath-aspnetcore-example
   cd src\StormpathExample
-  dnu restore
-  dnx web
+  dotnet restore
+  dotnet run
   ```
   
   Try navigating to the protected route `http://localhost:5000/Manage`. You should be redirected to the login page, where you can log in or create an account. Once you are logged in, you'll be able to access the route.
