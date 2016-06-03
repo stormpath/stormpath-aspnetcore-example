@@ -15,11 +15,8 @@
         "Hosting:Environment": "Development"
       }
     },
-    "web": {
-      "commandName": "web",
-      "environmentVariables": {
-        "Hosting:Environment": "Development"
-      }
+    "Project": {
+      "commandName": "Project"
     }
   }
 }

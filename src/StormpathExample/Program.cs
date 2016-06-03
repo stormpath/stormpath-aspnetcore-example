@@ -1,4 +1,4 @@
-﻿// <copyright file="HomeController.cs" company="Stormpath, Inc.">
+﻿// <copyright file="Program.cs" company="Stormpath, Inc.">
 // Copyright (c) 2016 Stormpath, Inc.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
@@ -14,34 +14,23 @@
 // limitations under the License.
 // </copyright>
 
-using Microsoft.AspNetCore.Mvc;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
-namespace StormpathExample.Controllers
+namespace StormpathExample
 {
-    public class HomeController : Controller
+    public class Program
     {
-        public IActionResult Index()
+        public static void Main(string[] args)
         {
-            return View();
-        }
+            var host = new WebHostBuilder()
+                .UseKestrel()
+                .UseIISIntegration()
+                .UseContentRoot(Directory.GetCurrentDirectory())
+                .UseStartup<Startup>()
+                .Build();
 
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
+            host.Run();
         }
     }
 }

@@ -14,8 +14,8 @@
 // limitations under the License.
 // </copyright>
 
-using Microsoft.AspNet.Builder;
-using Microsoft.AspNet.Hosting;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -29,6 +29,7 @@ namespace StormpathExample
         {
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
+                .SetBasePath(env.ContentRootPath)
                 .AddJsonFile("appsettings.json")
                 .AddEnvironmentVariables();
             Configuration = builder.Build();
@@ -44,7 +45,13 @@ namespace StormpathExample
             // You can optionally pass configuration here instead, if you want.
             // Instantiate an object of type Stormpath.Configuration.Abstractions.StormpathConfiguration 
             // to configure the SDK via code.
-            services.AddStormpath();
+            services.AddStormpath(new Stormpath.Configuration.Abstractions.StormpathConfiguration
+            {
+                Application = new Stormpath.Configuration.Abstractions.ApplicationConfiguration()
+                {
+                    Name = "My Application"
+                }
+            });
 
             // Add framework services.
             services.AddMvc();
@@ -58,15 +65,12 @@ namespace StormpathExample
 
             if (env.IsDevelopment())
             {
-                app.UseBrowserLink();
                 app.UseDeveloperExceptionPage();
             }
             else
             {
                 app.UseExceptionHandler("/Home/Error");
             }
-
-            app.UseIISPlatformHandler();
 
             app.UseStaticFiles();
 
@@ -79,8 +83,5 @@ namespace StormpathExample
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
-
-        // Entry point for the application.
-        public static void Main(string[] args) => WebApplication.Run<Startup>(args);
     }
 }

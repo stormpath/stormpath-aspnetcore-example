@@ -14,8 +14,8 @@
 // limitations under the License.
 // </copyright>
 
-using Microsoft.AspNet.Authorization;
-using Microsoft.AspNet.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Stormpath.SDK.Account;
 using Stormpath.SDK.Client;
 
@@ -24,12 +24,15 @@ namespace StormpathExample.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        // Stormpath Client can be injected using DI
-        [FromServices]
-        public IClient StormpathClient { get; set; }
+        private readonly IClient stormpathClient;
+        private readonly IAccount stormpathAccount;
 
-        [FromServices]
-        public IAccount StormpathUser { get; set; }
+        public ManageController(IClient stormpathClient, IAccount stormpathAccount)
+        {
+            // Stormpath request objects injected via DI
+            this.stormpathClient = stormpathClient;
+            this.stormpathAccount = stormpathAccount;
+        }
 
         // GET: /<controller>/
         public IActionResult Index()
