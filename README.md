@@ -1,6 +1,8 @@
 # Stormpath ASP.NET Core Example Application
 
-Example web application using ASP.NET Core MVC 6 and Stormpath. Clone it and kick the tires!
+Example web application using ASP.NET Core and Stormpath. Clone it and kick the tires!
+
+If you want step-by-step instructions, check out the [Stormpath ASP.NET Core quickstart](http://docs.stormpath.com/dotnet/aspnetcore/latest/quickstart.html).
 
 ## Getting Started
 
