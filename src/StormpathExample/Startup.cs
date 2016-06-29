@@ -42,16 +42,14 @@ namespace StormpathExample
         {
             // By default, the Stormpath SDK will look for the 
             // API Key ID, API Key Secret, and Application href in environment variables.
-            // You can optionally pass configuration here instead, if you want.
-            // Instantiate an object of type Stormpath.Configuration.Abstractions.StormpathConfiguration 
+
+            // It will also search the application root for a file called stormpath.yaml or stormpath.json.
+            // This example project contains a stormpath.yaml file.
+            services.AddStormpath();
+
+            // You can optionally pass a configuration object instead.
+            // Instantiate and pass an object of type Stormpath.Configuration.Abstractions.StormpathConfiguration 
             // to configure the SDK via code.
-            services.AddStormpath(new Stormpath.Configuration.Abstractions.StormpathConfiguration
-            {
-                Application = new Stormpath.Configuration.Abstractions.ApplicationConfiguration()
-                {
-                    Name = "My Application"
-                }
-            });
 
             // Add framework services.
             services.AddMvc();
