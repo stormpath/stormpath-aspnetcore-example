@@ -23,14 +23,14 @@ namespace StormpathExample.Controllers
     // This API controller is protected and requires either an active Stormpath cookie
     // or Bearer authentication.
     [Route("api/[controller]")]
-    [Authorize]
+    [Authorize(Policy = "AdminsGroup")]
     public class ProtectedValuesController : Controller
     {
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            return new string[] { "hello", "secure", "world" };
+            return new[] { "hello", "secure", "world" };
         }
     }
 }

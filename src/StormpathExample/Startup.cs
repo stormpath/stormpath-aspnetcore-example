@@ -14,12 +14,15 @@
 // limitations under the License.
 // </copyright>
 
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Stormpath.AspNetCore;
+using Stormpath.Configuration.Abstractions;
+using StormpathExample.Infrastructure;
 
 namespace StormpathExample
 {
@@ -45,7 +48,13 @@ namespace StormpathExample
 
             // It will also search the application root for a file called stormpath.yaml or stormpath.json.
             // This example project contains a stormpath.yaml file.
-            services.AddStormpath();
+            services.AddStormpath(new StormpathConfiguration()
+            {
+                Web = new WebConfiguration()
+                {
+                    ServerUri = "http://localhost:5000"
+                }
+            });
 
             // You can optionally pass a configuration object instead.
             // Instantiate and pass an object of type Stormpath.Configuration.Abstractions.StormpathConfiguration 
@@ -53,6 +62,13 @@ namespace StormpathExample
 
             // Add framework services.
             services.AddMvc();
+
+            services.AddAuthorization(options =>
+            {
+                options.AddPolicy("AdminsGroup", policy => policy.RequireAuthenticatedUser().AddRequirements(new StormpathGroupRequirement("admin")));
+            });
+
+            services.AddSingleton<IAuthorizationHandler, StormpathGroupHandler>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

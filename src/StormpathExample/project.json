@@ -19,7 +19,7 @@
       "type": "platform",
       "version": "1.0.0"
     },
-    "Stormpath.AspNetCore": "0.3.2"
+    "Stormpath.AspNetCore": "0.4.0-beta1"
   },
   "frameworks": {
     "netcoreapp1.0": {
