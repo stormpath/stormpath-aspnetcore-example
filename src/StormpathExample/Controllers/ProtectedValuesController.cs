@@ -20,8 +20,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace StormpathExample.Controllers
 {
-    // This API controller is protected and requires either an active Stormpath cookie
-    // or Bearer authentication.
+    // This API controller is protected and requires the user to be logged in.
+    // For authorization policies, see the comments in Startup.
     [Route("api/[controller]")]
     [Authorize]
     public class ProtectedValuesController : Controller

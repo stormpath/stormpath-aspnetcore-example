@@ -14,6 +14,7 @@
 // limitations under the License.
 // </copyright>
 
+using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Stormpath.SDK.Account;
@@ -21,17 +22,19 @@ using Stormpath.SDK.Client;
 
 namespace StormpathExample.Controllers
 {
+    // This API controller is protected and requires the user to be logged in.
+    // For authorization policies, see the comments in Startup.
     [Authorize]
     public class ManageController : Controller
     {
         private readonly IClient stormpathClient;
         private readonly IAccount stormpathAccount;
 
-        public ManageController(IClient stormpathClient, IAccount stormpathAccount)
+        public ManageController(IClient stormpathClient, Lazy<IAccount> stormpathAccount)
         {
             // Stormpath request objects injected via DI
             this.stormpathClient = stormpathClient;
-            this.stormpathAccount = stormpathAccount;
+            this.stormpathAccount = stormpathAccount.Value;
         }
 
         // GET: /<controller>/

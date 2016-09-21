@@ -48,11 +48,32 @@ namespace StormpathExample
             services.AddStormpath();
 
             // You can optionally pass a configuration object instead.
-            // Instantiate and pass an object of type Stormpath.Configuration.Abstractions.StormpathConfiguration 
-            // to configure the SDK via code.
+            // Instantiate and pass an object to configure the SDK via code:
+            //app.UseStormpath(new StormpathConfiguration
+            //{
+            //    Application = new ApplicationConfiguration
+            //    {
+            //        Href = "YOUR_APPLICATION_HREF"
+            //    },
+            //    Client = new ClientConfiguration
+            //    {
+            //        ApiKey = new ClientApiKeyConfiguration
+            //        {
+            //            Id = "YOUR_API_KEY_ID",
+            //            Secret = "YOUR_API_KEY_SECRET"
+            //        }
+            //    }
+            //});
 
             // Add framework services.
             services.AddMvc();
+
+            // Configure authorization policies here, which can include Stormpath requirements.
+            services.AddAuthorization(opt =>
+            {
+                opt.AddPolicy("AdminGroup", policy => policy.AddRequirements(new StormpathGroupsRequirement("admin")));
+                opt.AddPolicy("FavoriteIsCyan", policy => policy.AddRequirements(new StormpathCustomDataRequirement("favoriteColor", "cyan")));
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
