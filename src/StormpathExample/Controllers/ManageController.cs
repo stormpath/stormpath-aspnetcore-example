@@ -27,14 +27,14 @@ namespace StormpathExample.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private readonly IClient stormpathClient;
-        private readonly IAccount stormpathAccount;
+        private readonly IClient _stormpathClient;
+        private readonly IAccount _stormpathAccount;
 
         public ManageController(IClient stormpathClient, Lazy<IAccount> stormpathAccount)
         {
             // Stormpath request objects injected via DI
-            this.stormpathClient = stormpathClient;
-            this.stormpathAccount = stormpathAccount.Value;
+            _stormpathClient = stormpathClient;
+            _stormpathAccount = stormpathAccount.Value;
         }
 
         // GET: /<controller>/
