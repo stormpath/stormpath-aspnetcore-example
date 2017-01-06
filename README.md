@@ -1,4 +1,4 @@
-# Stormpath ASP.NET Core Example Application
+# Stormpath ASP.NET Core Example Application [![Slack Status](https://talkstormpath.shipit.xyz/badge.svg)](https://talkstormpath.shipit.xyz)
 
 Example web application using ASP.NET Core and Stormpath. Clone it and kick the tires!
 
