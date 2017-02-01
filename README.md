@@ -19,8 +19,8 @@ If you want step-by-step instructions, check out the [Stormpath ASP.NET Core qui
   Open your key file and grab the **API Key ID** and **API Key Secret**, then run these commands in PowerShell (or the Windows Command Prompt) to save them as environment variables:
 
   ```
-  setx STORMPATH_CLIENT_APIKEY_ID "[value from properties file]"
-  setx STORMPATH_CLIENT_APIKEY_SECRET "[value from properties file]"
+  setx STORMPATH_CLIENT_APIKEY_ID "value from properties file"
+  setx STORMPATH_CLIENT_APIKEY_SECRET "value from properties file"
   ```
   
 4. **Store your Stormpath Application href in an environment variable**
@@ -32,7 +32,7 @@ If you want step-by-step instructions, check out the [Stormpath ASP.NET Core qui
   Save this as an environment variable:
 
   ```
-  setx STORMPATH_APPLICATION_HREF "[your Application href]"
+  setx STORMPATH_APPLICATION_HREF "your Application href"
   ```
 
 5. **Clone this repository**
