@@ -17,8 +17,7 @@
 using System;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Stormpath.SDK.Account;
-using Stormpath.SDK.Client;
+using Stormpath.Owin.Abstractions;
 
 namespace StormpathExample.Controllers
 {
@@ -27,14 +26,12 @@ namespace StormpathExample.Controllers
     [Authorize]
     public class ManageController : Controller
     {
-        private readonly IClient _stormpathClient;
-        private readonly IAccount _stormpathAccount;
+        private readonly ICompatibleOktaAccount _account;
 
-        public ManageController(IClient stormpathClient, Lazy<IAccount> stormpathAccount)
+        public ManageController(Lazy<ICompatibleOktaAccount> account)
         {
             // Stormpath request objects injected via DI
-            _stormpathClient = stormpathClient;
-            _stormpathAccount = stormpathAccount.Value;
+            _account = account.Value;
         }
 
         // GET: /<controller>/

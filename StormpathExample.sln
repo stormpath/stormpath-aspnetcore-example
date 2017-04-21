@@ -1,16 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26403.7
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5C381C8E-8E82-487A-89AB-9C2DD0EAF94A}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{1C1A01D6-0A34-44DF-8C71-E484C010C59B}"
-	ProjectSection(SolutionItems) = preProject
-		global.json = global.json
-	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "StormpathExample", "src\StormpathExample\StormpathExample.xproj", "{DEDD8EAB-44F2-4E5F-8E74-D1366856EC78}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "StormpathExample", "src\StormpathExample\StormpathExample.csproj", "{DEDD8EAB-44F2-4E5F-8E74-D1366856EC78}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

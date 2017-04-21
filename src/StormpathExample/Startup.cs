@@ -20,6 +20,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Stormpath.AspNetCore;
+using Stormpath.Configuration.Abstractions;
 
 namespace StormpathExample
 {
@@ -40,30 +41,22 @@ namespace StormpathExample
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            // By default, the Stormpath SDK will look for the 
-            // API Key ID, API Key Secret, and Application href in environment variables.
-
-            // It will also search the application root for a file called stormpath.yaml or stormpath.json.
-            // This example project contains a stormpath.yaml file.
-            services.AddStormpath();
+            // By default, these environment variables will be seached for configuration:
+            // OKTA_ORG
+            // OKTA_APITOKEN
+            // OKTA_APPLICATION_ID
 
             // You can optionally pass a configuration object instead.
             // Instantiate and pass an object to configure the SDK via code:
-            //app.UseStormpath(new StormpathConfiguration
-            //{
-            //    Application = new ApplicationConfiguration
-            //    {
-            //        Href = "YOUR_APPLICATION_HREF"
-            //    },
-            //    Client = new ClientConfiguration
-            //    {
-            //        ApiKey = new ClientApiKeyConfiguration
-            //        {
-            //            Id = "YOUR_API_KEY_ID",
-            //            Secret = "YOUR_API_KEY_SECRET"
-            //        }
-            //    }
-            //});
+            services.AddStormpath(new StormpathConfiguration
+            {
+                Org = "https://dev-12345.oktapreview.com/",
+                ApiToken = "your_api_token",
+                Application = new OktaApplicationConfiguration()
+                {
+                    Id = "abcd1234"
+                }
+            });
 
             // Add framework services.
             services.AddMvc();
