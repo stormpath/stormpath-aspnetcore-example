@@ -7,6 +7,6 @@ For specific guidance on what this means for ASP.NET users of Stormpath, see the
 
 This project has been updated to use the Okta-compatible middleware packages (4.0.0+). If you want to migrate an existing Stormpath-backed ASP.NET application to Okta, you can use this project as an example.
 
-For an (ASP.NET) example of how to use the OpenID Connect Code Flow with Okta (without the legacy Stormpath libraries), see [oktadeveloper/okta-oauth-aspnet-codeflow](https://github.com/oktadeveloper/okta-oauth-aspnet-codeflow). An ASP.NET Core example is coming soon.
+For an example of how to use the OpenID Connect Code Flow with Okta (without the legacy Stormpath libraries), see Lee's blog post on [using OpenID Connect with ASP.NET Core](https://okta.github.io/blog/2017/06/29/oidc-user-auth-aspnet-core).
 
-We're available to answer all questions at [support@stormpath.com](mailto:support@stormpath.com).
+We're available to answer all questions at [developers@okta.com](mailto:developers@okta.com).

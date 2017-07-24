@@ -50,10 +50,13 @@ namespace StormpathExample
             // Instantiate and pass an object to configure the SDK via code:
             services.AddStormpath(new StormpathConfiguration
             {
+                // Replace with your Okta Base URL:
                 Org = "https://dev-12345.oktapreview.com/",
+                // Replace with your Okta API token:
                 ApiToken = "your_api_token",
                 Application = new OktaApplicationConfiguration()
                 {
+                    // Replace with your Okta migrated Application ID:
                     Id = "abcd1234"
                 }
             });
